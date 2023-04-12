@@ -1,4 +1,6 @@
-# setup.py is used to 
+# The setup.py is a Python script that is used ensure that the program is intalled correctly
+# It includes choices and metadata about the program, such as 
+# the package name, version, author, license, minimal dependencies, entry points, data files, and so on.
 
 from setuptools import find_packages, setup
 from typing import List
@@ -17,11 +19,13 @@ def get_requirements(file_path: str) -> List[str]:
         if hyphen_e_dot in requirements:
             requirements.remove(hyphen_e_dot)
 
+
 setup(
-name='bulding-load-prediction',
-version='0.0.1',
-author='Shuo Li',
-author_email='shuo.li0208@gmail.com',
-packages=find_packages(),
-install_requires=get_requirements('requirements.txt')
+    name='bulding-load-prediction',
+    version='0.0.1',
+    author='Shuo Li',
+    author_email='shuo.li0208@gmail.com',
+    packages=find_packages(),
+    install_requires=get_requirements('requirements.txt')
 )
+
