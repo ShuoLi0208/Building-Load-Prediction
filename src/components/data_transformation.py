@@ -85,15 +85,20 @@ class DataTransformation:
                 "Applying preprocessing object on training dataframe and testing datasets"
             )
 
-            input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
+            input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
+            input_feature_train_df_preprocessed = pd.DataFrame(input_feature_train_arr, columns=input_feature_train_df.columns,
+                                                               index=input_feature_train_df.index)
+
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df) # no fit() on test data!
+            input_feature_test_df_preprocessed = pd.DataFrame(input_feature_test_arr, columns=input_feature_test_df.columns,
+                                                              index=input_feature_test_df.index)
 
             # two sets of train/test for heating and cooling loads, respectively
-            train_arr1 = np.c_[input_feature_train_arr, np.array(target_feature_train_df[target_columns[0]])]
-            test_arr1 = np.c_[input_feature_test_arr, np.array(target_feature_test_df[target_columns[0]])]
+            train_df1 = pd.concat([input_feature_train_df_preprocessed, target_feature_train_df[target_columns[0]]], axis=1)
+            test_df1 = pd.concat([input_feature_test_df_preprocessed, target_feature_test_df[target_columns[0]]], axis=1)
 
-            train_arr2 = np.c_[input_feature_train_arr, np.array(target_feature_train_df[target_columns[1]])]
-            test_arr2 = np.c_[input_feature_test_arr, np.array(target_feature_test_df[target_columns[1]])]
+            train_df2 = pd.concat([input_feature_train_df_preprocessed, target_feature_train_df[target_columns[1]]], axis=1)
+            test_df2 = pd.concat([input_feature_test_df_preprocessed, target_feature_test_df[target_columns[1]]], axis=1)
 
             logging.info(f"Saved preprocessing object")
 
@@ -103,10 +108,10 @@ class DataTransformation:
             )
 
             return (
-                train_arr1,
-                test_arr1,
-                train_arr2,
-                test_arr2,
+                train_df1,
+                test_df1,
+                train_df2,
+                test_df2,
                 self.data_transformation_config.preprocessor_obj_file_path,
             )
 
