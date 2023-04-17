@@ -34,7 +34,7 @@ class ModelTrainer:
 
         try:
             logging.info("Load the preprocessing.pkl file")
-             
+            
             preprocessing = load_object(preprocessing_path)
 
             logging.info("Get input and output variables")
@@ -168,7 +168,7 @@ class ModelTrainer:
             # save the model that produces the smallest MAPE in the test set
             final_model_y1 = final_model1_list[mape1_list.index(min(mape1_list))]
             print("The best model for heating load prediction: ", list(models.values())[mape1_list.index(min(mape1_list))])
-            final_model_y2 = final_model1_list[mape2_list.index(min(mape2_list))]
+            final_model_y2 = final_model2_list[mape2_list.index(min(mape2_list))]
             print("The best model for cooling load prediction: ", list(models.values())[mape2_list.index(min(mape2_list))])
 
             logging.info("Best models for the testing dadaset are found")
