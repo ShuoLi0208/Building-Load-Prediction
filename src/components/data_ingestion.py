@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation, DataTransformationConfig
-
+from src.components.model_trainer import ModelTrainer, ModelTrainerConfig
 
 # use dataclass to define class variables only
 @dataclass
