@@ -13,10 +13,10 @@ The dataset has 768 examples and 8 features, which can be downloaded from the UC
 * X8 Glazing Area Distribution
 
 ## Jupyter notebook code
-In the folder named notebook, we performed exploratory data analysis and model training, which are given respectively in the EDA.ipynb and model_training.ipynb.
+In the folder named **notebook** (here-and-after folder names are in bold), we performed exploratory data analysis and model training, which are given respectively in the EDA.ipynb and model_training.ipynb.
 
 ## Modular code
-The application.py file at the top-level directory is used to generate a website using Flask for performing heating and cooling load prediction with custom user inputs of the 8 features. The major source codes for implementing the machine learning pipeline are in the folder **src/components**, including data_ingestion.py, data_transformation.py and model_trainer.py files. The train and test datasets (in .csv format), and the saved preprocessing and model objects (in .pkl format) are stored in the folder named **artifacts**. Python files logger.py and exception.py files within the source folder (i.e. **src**) are used for logging exception handling, respectively. 
+The application.py file at the top-level directory and the predict_pipeline.py file in teh folder **src/pipeline** are used to generate a website using Flask, aiming for performing heating and cooling load prediction with custom user inputs of the 8 features. The major source codes for implementing the machine learning pipeline are in the folder **src/components**, including data_ingestion.py, data_transformation.py and model_trainer.py files. The train and test datasets (in .csv format), and the saved preprocessing and model objects (in .pkl format) are stored in the folder named **artifacts**. Python files logger.py and exception.py files within the source folder (i.e. **src**) are used for logging exception handling, respectively. 
 
 ## Deployment using AWS Elastic Beanstalk
 See the configuration file i.e. python.config in the folder named **.ebextensions**.
